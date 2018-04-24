@@ -1,0 +1,247 @@
+/*----- Background -----*/
+@mixin background($imageUrl, $repeat, $width: inherit, $height: inherit) {
+	background : {
+		image    : url($imageUrl);
+		repeat   : $repeat;
+		size     : $width $height;
+	}
+}
+
+/*----- Fonts -----*/
+@mixin relative-font-size($size: 12) {
+	font-size: #{$size}px;
+	font-size: #{$size * 0.1}rem;
+}
+
+@mixin font-weight($font, $size) {
+	font-family: $font;
+	font-weight: $size;
+}
+
+/*----- Links -----*/
+@mixin outline($type: none) {
+	outline: $type;
+}
+
+/*----- Retina -----*/
+@mixin image-2x($image, $width: 100%, $height: 100%) {
+	@media (min--moz-device-pixel-ratio: 1.3),
+				 (-o-min-device-pixel-ratio: 2.6/2),
+				 (-webkit-min-device-pixel-ratio: 1.3),
+				 (min-device-pixel-ratio: 1.3),
+				 (min-resolution: 1.3dppx) {
+		/* on retina, use image that's scaled by 2 */
+		background-image: url($image);
+		background-size: $width $height;
+	}
+}
+
+/*----- Border Radius -----*/
+@mixin border-radius($radius) {
+	-webkit-border-radius: $radius;
+	border-radius: $radius;
+	background-clip: padding-box;  /* stops bg color from leaking outside the border: */
+}
+
+/*----- Opacity -----*/
+@mixin opacity($opacity) {
+	opacity: $opacity;
+	$opacity-ie: $opacity * 100;
+	filter: alpha(opacity=$opacity-ie); //IE8
+}
+
+/*----- Media Queries -----*/
+@mixin respond-to($media) {
+	@if $media == mobile {
+		@media only screen and (max-width: $break_mobile) { @content; }
+	}
+	@else if $media == tablet {
+		@media only screen and (min-width: $break_mobile + 1) and (max-width: $break_desktop - 1) { @content; }
+	}
+	@else if $media == desktop {
+		@media only screen and (min-width: $break_desktop) { @content; }
+	}
+	@else if $media == wide {
+		@media only screen and (min-width: $break_wide) { @content; }
+	}
+}
+
+/*----- Selection CSS -----*/
+@mixin selection {
+	::-moz-selection { @content; }
+	::selection { @content; }
+}
+
+@mixin background-size($size) {
+	-webkit-background-size: $size;
+	-moz-background-size: $size;
+	-o-background-size: $size;
+	background-size: $size;
+}
+
+@mixin disable-select() {
+	-webkit-touch-callout: none;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+}
+
+/*----- Box Sizing -----*/
+@mixin box-sizing($box-model) {
+	-webkit-box-sizing: $box-model; // Safari <= 5
+		 -moz-box-sizing: $box-model; // Firefox <= 19
+					box-sizing: $box-model;
+}
+
+/*----- Translate 2D mixin -----*/
+@mixin translate2d($i, $k) {
+	 -webkit-transform: translate($i, $k);
+			 -ms-transform: translate($i, $k);
+					 transform: translate($i, $k);
+}
+
+/*----- Scale mixin -----*/
+@mixin scale($i) {
+	 -webkit-transform: scale($i);
+			 -ms-transform: scale($i);
+					 transform: scale($i);
+}
+
+/*----- Rotate mixin -----*/
+@mixin rotate($i) {
+	 -webkit-transform: rotate($i);
+			 -ms-transform: rotate($i);
+					 transform: rotate($i);
+}
+
+/*----- Translate 3D mixin -----*/
+@mixin translate3d($i, $k, $z) {
+	 -webkit-transform: translate3d($i, $k, $z);
+			-moz-transform: translate3d($i, $k, $z);
+				-o-transform: translate3d($i, $k, $z);
+			 -ms-transform: translate3d($i, $k, $z);
+					 transform: translate3d($i, $k, $z);
+}
+
+
+/*----- Vendorize mixin -----*/
+@mixin vendorize($property, $value) {
+	-webkit-#{$property}: $value;
+	-moz-#{$property}: $value;
+	-ms-#{$property}: $value;
+	-o-#{$property}: $value;
+	#{$property}: $value;
+}
+
+@mixin perspective($v: 1000px) {
+	-webkit-perspective:  $v;
+	-moz-perspective:   $v;
+	-ms-perspective:  $v;
+	perspective:    $v;
+}
+
+@mixin transform($i) {
+	 -webkit-transform: $i;
+			 -ms-transform: $i;
+					 transform: $i;
+}
+
+/* Transition for animations */
+// Usage: @include transition(all, 0.2s, ease-in-out);
+@mixin transition($transition-property, $transition-time, $method, $delay: 0s) {
+	-webkit-transition: $transition-property $transition-time $method $delay;
+	-moz-transition: $transition-property $transition-time $method $delay;
+	-ms-transition: $transition-property $transition-time $method $delay;
+	-o-transition: $transition-property $transition-time $method $delay;
+	transition: $transition-property $transition-time $method $delay;
+}
+
+/* Transition for animations - multiple */
+@mixin transitions($args...) {
+	-webkit-transition: $args;
+	-moz-transition: $args;
+	-ms-transition: $args;
+	-o-transition: $args;
+	transition: $args;
+}
+
+@mixin cover {
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+}
+
+@mixin hardware-acc {
+	@include vendorize(transform, translate3d(0, 0, 0));
+	-webkit-backface-visibility: hidden;
+	-webkit-perspective: 1000;
+}
+
+// BG RETINA
+@mixin background-image-retina($file, $type, $width, $height) {
+	background-image: url($file + '.' + $type);
+	@media only screen and (-webkit-min-device-pixel-ratio: 2),
+		only screen and (-moz-min-device-pixel-ratio: 2),
+		only screen and (-o-min-device-pixel-ratio: 2/1),
+		only screen and (min-device-pixel-ratio: 2),
+		only screen and (min-resolution: 192dpi),
+		only screen and (min-resolution: 2dppx) {
+		& {
+			background-image: url($file + '@2x.' + $type);
+			-webkit-background-size: $width $height;
+			-moz-background-size: $width $height;
+			-o-background-size: $width $height;
+			background-size: $width $height;
+		}
+	}
+}
+
+/*---- Placeholder Color ----*/
+@mixin placeholder($color) {
+	&::-webkit-input-placeholder {
+		color: $color;
+	}
+
+&:-moz-placeholder { /* Firefox 18- */
+	 color: $color;
+}
+
+&::-moz-placeholder {  /* Firefox 19+ */
+	 color: $color;
+}
+
+&:-ms-input-placeholder {
+	 color: $color;
+	}
+}
+
+// RETINA SPRITES (VIA SPRITESMITH)
+$sprite-multiplier: 2;
+
+@mixin sprite-position-1x($sprite) {
+	$sprite-offset-x: nth($sprite, 3) / $sprite-multiplier;
+	$sprite-offset-y: nth($sprite, 4) / $sprite-multiplier;
+	background-position: $sprite-offset-x  $sprite-offset-y;
+}
+
+@mixin sprite-width-1x($sprite) {
+	width: nth($sprite, 5) / $sprite-multiplier;
+}
+
+@mixin sprite-height-1x($sprite) {
+	height: nth($sprite, 6) / $sprite-multiplier;
+}
+
+@mixin sprite-size-1x($sprite) {
+	background-size: nth($sprite, 7) / $sprite-multiplier nth($sprite, 8) / $sprite-multiplier;
+}
+
+@mixin sprite-magic($sprite) {
+	@include sprite-image($sprite);
+	@include sprite-position-1x($sprite);
+	@include sprite-width-1x($sprite);
+	@include sprite-height-1x($sprite);
+	@include sprite-size-1x($sprite);
+}

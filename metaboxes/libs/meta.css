@@ -1,0 +1,138 @@
+.wpalchemy-meta-control {
+	width: 100%;
+}
+
+.wpalchemy-meta-control th, .wpalchemy-meta-control td {
+	vertical-align: top;
+	padding: 10px;
+	text-align: left;
+	border-bottom: 1px dashed #DFDFDF;
+}
+
+.wpalchemy-meta-control th {
+	width: 25%;
+}
+
+.wpalchemy-meta-control th label {
+	display: inline-block;
+	padding: 4px 0;
+}
+
+.wpalchemy-meta-control th span {
+	font-weight: normal;
+	font-style: italic;
+	color: #AAA;
+}
+
+.wpalchemy-meta-control td textarea {
+	margin: 0;
+	resize: none;
+	width: 100%;
+	height: 100px;
+	padding: 3px 5px;
+}
+
+.wpalchemy-meta-control td input {
+	width: 100%;
+	margin: 0;
+}
+
+.wpalchemy-meta-control td input.check {
+	width: inherit;
+	margin-right: 4px;
+}
+
+.wpalchemy-meta-control td input.datepicker {
+	width: 40%;
+}
+
+.wpalchemy-meta-control td .preview {
+	border-radius: 2px;
+	max-width: 50px;
+	padding: 2px 4px;
+	background-color: #d0d0d0;
+	text-decoration: underline;
+	display: block;
+	cursor: help;
+	cursor: -webkit-zoom-in;
+	cursor: -moz-zoom-in;
+}
+
+.wpalchemy-meta-control td p {
+	margin: .5em 0;
+}
+
+.wpalchemy-meta-control td button {
+	outline: none;
+}
+
+.wpalchemy-meta-control td .hide {
+	display: none;
+}
+
+.wpalchemy-meta-control td .wpa_loop .wpa_group {
+	border: 1px solid #DFDFDF;
+	background-color: #FFF;
+	border-radius: 3px;
+	padding: 0 .5em .5em;
+	margin: 1em 0 0;
+	overflow: hidden;
+}
+
+.wpalchemy-meta-control td .wpa_loop .wpa_group.first {
+	margin-top: 0;
+}
+
+.wpalchemy-meta-control td .wpa_loop .wpa_group .col {
+	float: left;
+	width: 45%;
+	margin-right: 3%;
+	padding-left: .5em;
+	border-left: 1px dotted #DFDFDF;
+}
+
+.wpalchemy-meta-control td .wpa_loop .wpa_group .col.first {
+	border-left: 0;
+	padding-left: 0;
+}
+
+.wpalchemy-meta-control td .wpa_loop .wpa_group .col .lbl {
+	text-decoration: underline;
+}
+
+.wpalchemy-meta-control td .smallinput {
+	width: 60%;
+}
+
+.wpalchemy-meta-control td .handle {
+	border-left: 1px solid #DFDFDF;
+	border-right: 1px solid #DFDFDF;
+}
+
+.wpalchemy-meta-control td .handle .close {
+	float: right;
+	font-size: 12px;
+	padding: 2px 0;
+}
+
+.wpalchemy-meta-control .checkboxes {
+	margin: 0;
+}
+
+.wpalchemy-meta-control .checkboxes li {
+	overflow: hidden;
+}
+
+.wpalchemy-meta-control .checkboxes li input {
+	float: left;
+	width: auto;
+	margin: 2px 6px 0 0;
+}
+
+.wpalchemy-meta-control .checkboxes li label {
+	float: left;
+}
+
+.wpalchemy-meta-control .mce-tinymce {
+	border: 1px solid #DFDFDF;
+}

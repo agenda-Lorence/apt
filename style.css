@@ -1,0 +1,20 @@
+/*
+Theme Name:     Apt Wealth Responsive (2015)
+Theme URI:      http://www.canvasgroup.com
+Description:    Wordpress theme for Apt Wealth
+Author:         Canvas Group
+Author URI:     http://www.canvasgroup.com.au
+Version:        1.0
+*/
+
+nav ul li {
+    width: 12% !important;
+}
+nav ul li:last-child {
+    width: 12% !important;
+}
+
+
+body{
+    background: #fff;
+}

@@ -1,0 +1,97 @@
+//-------------
+// Fonts
+//-------------
+$font_main: Georgia, Cambria, 'Times New Roman', Times, serif;
+$font_alt: plantinregular, Georgia, Cambria, Times New Roman, Times, serif;
+$font_arial: Arial, sans-serif;
+
+//---------------------
+// Color Variables
+//---------------------
+$font_default            : #76787c;
+$font_default_anchor     : #000;
+
+//---------------------
+// Background Variables
+//---------------------
+$background_color        : #FFFFFF;
+$background_darkblue     : #003867;
+$borders                 : #dcddde;
+$borders_blue            : #003867;
+
+//-------------
+// Font Size
+//-------------
+$base_font_size          : 62.5%; //Responsive Type Setting
+
+//-------------
+// Forms,Borders,Widths,Heights
+//-------------
+$header_height           : 242px;
+$footer_height           : 78px;
+
+
+$footer_height_tablet    : 9999px;
+$width_tablet            : 9999px;
+
+$header_mobile_height    : 9999px;
+
+//-------------
+// Sprite Sizes & Break points
+//-------------
+$sprite_width            : 500px;
+$sprite_height           : 500px;
+$break_mobile            : 767px;
+$break_desktop           : 1024px;
+$break_wide              : 1200px;
+
+//-------------
+// Z Index's
+//-------------
+$z_content                : 1;
+$z_nav                    : 97;
+$z_header                 : 98;
+$z_hamburger              : 100;
+$z_loading                : 250; // AJAX loader between pages
+
+$z_line: 104;
+$z_start: 105;
+
+// $z_mobile_nav             : 98;
+// $z_logo                   : 99;
+// $z_nav                    : 99;
+// $z_search                 : 99;
+
+// $z_animating              : 101;
+
+
+// BFS001 Variables
+$backgroundBlack: #000;
+$backgroundDarkBlue: #003867;
+$backgroundGray: #e9e6de;
+$backgroundWhite: #fff;
+$backgroundError: #ff8686;
+
+$borderDarkBlue: #003867;
+$borderGray: #dcddde;
+
+$textDefault: #76787C;
+$textDarkBlue: #003867;
+$textDarkGray: #76787C;
+$textGray: #808285;
+$textLightBlue: #d1d3d4;
+$textWhite: #fff;
+$textBlack: #000;
+
+$fontSansSerif: Arial, sans-serif;
+$fontSerif: plantinregular, Georgia, Cambria, Times New Roman, Times, serif;
+$fontSmall: 11px;
+$fontMedium: 12px;
+$fontBig: 15px;
+$fontBigger: 23px;
+$fontHuge: 40px;
+
+$widthBox: 680px;
+$widthSidebox: 190px;
+$widthGutter: 48px;
+$widthFormField: 424px;

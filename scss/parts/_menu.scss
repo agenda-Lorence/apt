@@ -1,0 +1,389 @@
+html.menu-transition {
+	header {
+		a.burger {
+			span.line {
+				@include transition(all, 0.5s, ease-in-out);
+			}
+		}
+	}
+	nav {
+		@include transition(all, 0.5s, ease-in-out);
+	}
+}
+
+html.apt-menu {
+	@include respond-to(mobile) { overflow-y: scroll; }
+	body {
+		@include respond-to(mobile) { background: #003a67; }
+	}
+	header {
+		div.wrapper {
+			a.burger {
+				span {
+					&.top {
+						@include respond-to(mobile) { @include vendorize(transform, translate(0, 9px) rotate(45deg)); }
+					}
+					&.mid {
+						@include respond-to(mobile) { @include opacity(0); }
+					}
+					&.bot {
+						@include respond-to(mobile) { @include vendorize(transform, translate(0, -9px) rotate(-45deg)); }
+					}
+				}
+			}
+		}
+	}
+	nav {
+		@include respond-to(mobile) { @include vendorize(transform, translateY(0)); position: relative; }
+	}
+	#content {
+		@include respond-to(mobile) { display: none; }
+	}
+	footer {
+		@include respond-to(mobile) { display: none; }
+	}
+}
+
+// Animating over-writes
+html.apt-menu-animating {
+	body {
+		@include respond-to(mobile) { background: #ffffff; }
+	}
+	nav {
+		@include respond-to(mobile) { position: fixed; overflow: hidden; }
+	}
+	#content {
+		@include respond-to(mobile) { display: block; }
+	}
+	footer {
+		@include respond-to(mobile) { display: block; }
+	}
+}
+
+header {
+	width: 100%;
+	background: #003a67;
+	height: $header_height;
+	position: absolute;
+	z-index: $z_header;
+	@include respond-to(mobile) { height: 87px; border-bottom: 1px solid #fff; position: fixed; }
+	div.wrapper {
+		height: 100%;
+
+		div#site-loader {
+			height: 10px;
+			width: 100%;
+			padding: 0 25px;
+			position: absolute;
+			bottom: 58px;
+			left: 0;
+			@include respond-to(mobile) { display: none; }
+
+			div.site-loader-inner {
+				width: 100%;
+				height: 100%;
+				position: relative;
+				overflow: hidden;
+				.start {
+					left: 0;
+					top: 0;
+					top: 1px;
+					padding-right: 14px;
+					height: 8px;
+					width: 8px;
+					background: #003867;
+					position: absolute;
+					z-index: $z_start;
+					&:before {
+						border: 2px solid #fff;
+						left: 0;
+						width: 4px;
+						height: 4px;
+						background: #003867;
+						content: '';
+						position: absolute;
+						display: inline-block;
+					}
+				}
+				.line-container {
+					padding: 4px 0 0 0;
+					width: 100%;
+					height: 100%;
+					left: 0;
+					position: relative;
+					z-index: $z_line;
+					.line {
+						background: #fff;
+						width: 100%;
+						height: 2px;
+						position: relative;
+					}
+					.end {
+						padding-left: 14px;
+						height: 9px;
+						width: 9px;
+						position: absolute;
+						right: 0;
+						background: #003867;
+						top: 0;
+
+						&:before {
+							content: '';
+							width: 9px;
+							height: 9px;
+							position: absolute;
+							background: #fff;
+							right: 0;
+							@include vendorize('border-radius', 5px);
+						}
+					}
+				}
+			}
+
+		}
+
+		a.burger {
+			display: none;
+			position: absolute;
+			left: 15px;
+			top: 20px;
+			width: 50px;
+			height: 41px;
+			padding: 10px;
+			z-index: $z_hamburger;
+			@include respond-to(mobile) { display: block; position: fixed; }
+			.bars {
+				display: block;
+				position: relative;
+				width: 100%;
+				height: 100%;
+				span {
+					display: block;
+					&.line {
+						width: 100%;
+						height: 3px;
+						position: absolute;
+						background: #fff;
+						margin: auto;
+						&.top {
+							top: 0;
+						}
+
+						&.mid {
+							top: 0;
+							bottom: 0;
+						}
+
+						&.bot {
+							bottom: 0;
+						}
+					}
+				}
+			}
+		}
+
+		div.logo {
+			display: block;
+			position: absolute;
+			right: 25px;
+			bottom: 116px;
+			@include respond-to(mobile) { top: 12px; bottom: auto; }
+			a {
+				display: block;
+				width: 162px;
+				height: 82px;
+				@include background('../images/logo.png', no-repeat, 162px, 82px);
+				@include respond-to(mobile) { background-size: 104px 55px; width: 104px; height: 55px; }
+				span {
+					display: none;
+				}
+			}
+		}
+	}
+}
+
+nav {
+	background-color: #e9e6de;
+	border-bottom: 1px solid #cfd0d2;
+	font-size: 11px;
+	width: 100%;
+	z-index: 98;
+	height: 41px;
+	overflow: hidden;
+	top: $header_height;
+	position: absolute;
+	font-family: Arial, sans-serif;
+	&.pinned {
+		@include respond-to(desktop) { position: fixed; top: 0; }
+		@include respond-to(tablet) { position: fixed; top: 0; }
+	}
+	@include relative-font-size(11);
+	@include respond-to(mobile) {
+		width: 100%;
+		height: 100%;
+		background: #fff;
+		position: fixed;
+		left: 0;
+		top: 0;
+		background: $backgroundDarkBlue;
+		border-bottom: none;
+		z-index: $z_nav;
+		@include relative-font-size(17);
+		@include vendorize(transform, translateY(-100%));
+	}
+	.wrapper {
+		@include respond-to(mobile) { padding: 0; }
+	}
+	ul {
+		list-style-type: none;
+		@include respond-to(mobile) { padding-top: 87px; overflow: hidden; }
+		li {
+			float: left;
+			width: 10%;
+			border-right: 1px solid #dcddde;
+			overflow: hidden;
+			@include respond-to(mobile) { width: 100%; border-right: none; border-bottom: 1px solid $borderGray; }
+
+			&:first-child {
+				width: 7%;
+				@include respond-to(mobile) { width: 100%; }
+				span.out, span.over {
+					@include respond-to(desktop) { text-indent: -9999px; }
+					@include respond-to(tablet) { text-indent: -9999px; }
+				}
+				a {
+					span.over {
+						&:before {
+							content: '';
+							display: block;
+							position: absolute;
+							left: 0;
+							right: 0;
+							top: 0;
+							bottom: 0;
+							margin: auto;
+							@include sprite-magic($sprite-home-blue);
+							@include respond-to(mobile) { display: none; }
+						}
+					}
+					span.out {
+						&:before {
+							content: '';
+							display: block;
+							position: absolute;
+							left: 0;
+							right: 0;
+							top: 0;
+							bottom: 0;
+							margin: auto;
+							@include sprite-magic($sprite-home-white);
+							@include respond-to(mobile) { display: none; }
+						}
+					}
+				}
+			}
+
+			&:first-child.current_page_item {
+				a {
+					span.over {
+						&:before {
+							@include sprite-magic($sprite-home-white);
+						}
+					}
+				}
+			}
+
+			&:nth-child(5) {
+				width: 21%;
+				@include respond-to(mobile) { width: 100%; }
+			}
+
+			&:first-child {
+				border-left: 1px solid #dcddde;
+				@include respond-to(mobile) { border: none; }
+			}
+			&.current_page_item, &.current-page-ancestor {
+				a {
+					color: #fff;
+					span {
+						&.out {
+							visibility: hidden;
+						}
+						&.over {
+							background-color: #000;
+							color: #fff;
+						}
+					}
+				}
+			}
+			&:last-child {
+				border-right: 0;
+				float: right;
+				//width: 16%;
+				width: 12%;
+				@include respond-to(mobile) { float: left; width: 100%; border-bottom: none; }
+				a {
+					span {
+						&.out {
+							display: none;
+						}
+						&.over {
+							color: #003867;
+							background: #fff;
+							padding: 14px 25px 14px 0;
+							text-align: right;
+							@include respond-to(mobile) { text-align: left; padding: 25px; }
+							&:after {
+								display: block;
+								position: absolute;
+								content: '';
+								top: 0;
+								bottom: 0;
+								right: 10px;
+								margin: auto;
+								@include sprite-magic($sprite-secureLock);
+							}
+						}
+					}
+				}
+			}
+			a {
+				position: relative;
+				display: block;
+				height: 40px;
+				width: 100%;
+				text-decoration: none;
+				list-height: 1;
+				color: #808285;
+				text-align: center;
+				text-transform: uppercase;
+				@include respond-to(mobile) { height: 68px; text-align: left; }
+				&:hover {
+					span.out {
+						@include vendorize('transform', translateY(0px));
+					}
+				}
+				span {
+					position: absolute;
+					width: 100%;
+					height: 40px;
+					display: block;
+					padding: 14px 0;
+					@include transitions(0.1s, linear);
+					@include respond-to(mobile) { height: 68px; padding: 25px; }
+					&.out {
+						background-color: #000;
+						color: #fff;
+						z-index: 20;
+						@include vendorize('transform', translateY(-40px));
+						@include respond-to(mobile) { display: none; }
+					}
+					&.over {
+						background-color: #e9e6de;
+						color: #808285;
+					}
+				}
+			}
+		}
+	}
+}
